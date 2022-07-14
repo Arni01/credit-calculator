@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import cn from 'classnames';
-import s from './AllCreditDetailsItem.module.css';
-import { CURRENCY } from 'helpers/constants/CreditData';
+// import cn from 'classnames';
+// import s from './AllCreditDetailsItem.module.css';
+import { AmountList } from 'components';
 
 interface IAllCreditDetailsItem {
   id: number;
@@ -24,10 +24,19 @@ const AllCreditDetailsItem: FC<IAllCreditDetailsItem> = ({
     <tr>
       <td>{id}</td>
       <td>{datePayment}</td>
-      <td>{`${interestPayment} ${CURRENCY}`}</td>
-      <td>{`${mainDebit} ${CURRENCY}`}</td>
-      <td>{`${monthlyPayment} ${CURRENCY}`}</td>
-      <td>{`${remainingDebt} ${CURRENCY}`}</td>
+
+      <td>
+        <AmountList amount={interestPayment} />
+      </td>
+      <td>
+        <AmountList amount={mainDebit} />
+      </td>
+      <td>
+        <AmountList amount={monthlyPayment} />
+      </td>
+      <td>
+        <AmountList amount={remainingDebt} />
+      </td>
     </tr>
   );
 };

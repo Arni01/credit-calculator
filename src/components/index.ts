@@ -4,6 +4,7 @@ export { default as CalculationCreditInfo } from './CreditCalculator/Calculation
 export { default as DataEntry } from './CreditCalculator/DataEntry/DataEntry';
 
 // common
+export { default as AmountList } from './common/AmountList/AmountList';
 export { default as CustomInput } from './common/Input/CustomInput';
 export { default as CreditDescription } from './common/List/CreditDescription';
 export { default as CustomSelector } from './common/Selector/CustomSelector';
