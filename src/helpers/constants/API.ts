@@ -1,0 +1,2 @@
+export const API_URL_REFINANCING_RATE =
+  process.env.REACT_APP_API_URL_REFINANCING_RATE;

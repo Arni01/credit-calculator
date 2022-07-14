@@ -1,13 +1,396 @@
-body {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input[type='number']:hover,
+input[type='number']:focus {
+  -moz-appearance: number-input;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* #loading img {
+    width: 150px;
+} */
+
+/*---------------------------------------------------------------------
+General
+-----------------------------------------------------------------------*/
+/*
+    1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+    2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+figure {
+  line-height: 0;
+}
+/*
+    3. Allow percentage-based heights in the application
+*/
+html,
+body {
+  height: 100%;
+}
+
+html {
+  scrollbar-width: thin;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+body,
+p {
+  font-family: var(--ff-Poppins);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--clr-body);
+  letter-spacing: var(--ls-3);
+}
+
+/*
+    6. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  line-height: 0;
+}
+/*
+    7. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font-family: var(--ff-Poppins);
+  font-size: var(--fs-body, 16px);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-3);
+  background: none;
+  border: none;
+}
+
+input,
+textarea,
+select {
+  background: none;
+  border: none;
+  padding: 0 16px 0 24px;
+  height: 48px;
+  background-color: var(--clr-bg-input);
+  color: var(--clr-text-input);
+  border-radius: 8px;
+  width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: var(--clr-placeholder);
+}
+
+a,
+button {
+  cursor: pointer;
+  color: var(--clr-black-15);
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*
+    8. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/*
+    9. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+  margin: 0 auto;
+  padding: var(--pd-body);
+}
+
+*::-moz-selection {
+  background: var(--clr-blue-main);
+  color: var(--clr-white);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--clr-blue-main);
+  color: var(--clr-white);
+  text-shadow: none;
+}
+
+::selection {
+  background: var(--clr-blue-main);
+  color: var(--clr-white);
+  text-shadow: none;
+}
+
+a,
+.btn {
+  transition: all 0.5s ease-out 0s;
+}
+
+@media (any-hover: hover) {
+  a:hover {
+    color: var(--clr-blue-main);
+    text-decoration: none;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--clr-blue-dark);
+    transition: none;
+  }
+
+  button:focus-visible {
+    outline-offset: -2px;
+  }
+}
+
+a,
+button {
+  outline: medium none;
+  text-decoration: none;
+}
+
+input {
+  outline: medium none;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--clr-blue-dark);
+  transition: none;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline-offset: -2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ff-Montserrat);
+  color: var(--clr-title);
+  margin-top: 0px;
+}
+
+h1,
+h2 {
+  font-weight: var(--fw-700);
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--fw-600);
+  letter-spacing: var(--ls-3);
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  color: inherit;
+}
+
+label {
+  font-weight: normal;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-5);
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-4);
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  text-transform: uppercase;
+}
+
+h4 {
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+}
+
+h5 {
+  font-size: var(--fs-h5);
+  line-height: var(--lh-h5);
+}
+
+h6 {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+/*----------------------------------------------
+    Listing
+------------------------------------------------*/
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+dl,
+ol,
+ul {
+  list-style: none;
+}
+
+/*---------------------------------------------------------------------
+    Extra class
+---------------------------------------------------------------------*/
+hr {
+  margin: 0;
+  padding: 0px;
+  border-bottom: 1px solid #ccc;
+  display: inline-block;
+  width: 100%;
+  border-top: 0px;
+}
+
+.no-bg {
+  background: none;
+}
+
+/*************************
+    BG - Images
+*************************/
+.parallax {
+  background-size: cover !important;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -ms-background-size: cover !important;
+  position: relative;
+  z-index: 0;
+  background-origin: initial;
+  background-position: center center !important;
+  background-repeat: no-repeat;
+}
+
+/*----------------------------------------------------------------------
+    Buttons
+-----------------------------------------------------------------------*/
+.button {
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 700;
+  height: 50px;
+  position: relative;
+  background: #000;
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  border-radius: 20px;
+  border: 2px solid #000;
+}
+
+/*----------------------------------------------------------------------
+    Form
+-----------------------------------------------------------------------*/
+input[type='checkbox'],
+input.form-control[type='checkbox'] {
+  margin-top: 0.5rem;
+  background: #fff;
+  height: auto;
+  border: 1px solid #33e2a0;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: var(--clr-gray-b9);
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: var(--clr-gray-b9);
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: var(--clr-gray-b9);
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: var(--clr-gray-b9);
+}
+
+textarea.form-control {
+  height: 230px;
+  padding: 15px 30px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  -webkit-box-shadow: 0px 13px 25px 0px rgba(77, 54, 206, 0.2);
+  -moz-box-shadow: 0px 13px 25px 0px rgba(77, 54, 206, 0.2);
+  box-shadow: 0px 13px 25px 0px rgba(77, 54, 206, 0.2);
+}
+
+/*---------------------------------------------------------------------
+Section Title
+-----------------------------------------------------------------------*/
+.title {
+  z-index: 2;
+  position: relative;
 }
