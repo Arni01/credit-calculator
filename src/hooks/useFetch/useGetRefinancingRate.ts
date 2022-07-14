@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { getFullRate } from '../../helpers/creditData/creditData';
+import { getFullRate } from '../../helpers/creditMetods/creditMetods';
 import RefinancingRateService from '../../services/RefinancingRate.service';
 
 export const useGetRefinancingRate = () => {

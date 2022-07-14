@@ -1,12 +1,13 @@
-import { TCreditPeriodItem } from '../helpers/constants/CreditData';
-import { getFullRate } from '../helpers/creditData/creditData';
+import { CreditPeriod, TCreditPeriodItem } from 'helpers/constants/CreditData';
+import { getFullRate } from 'helpers/creditMetods/creditMetods';
 
 enum ActionKind {
   SET_RATE = 'SET_RATE',
   SET_SUM = 'SET_SUM',
+  SET_PERIOD = 'SET_PERIOD',
 }
 
-interface IStateReducer {
+export interface IStateReducer {
   currentPeriod: TCreditPeriodItem;
   creditSum: number;
   creditRate: number;
@@ -14,7 +15,7 @@ interface IStateReducer {
 
 export interface IAcion {
   type: keyof typeof ActionKind;
-  payload: number | TCreditPeriodItem;
+  payload: number | string | TCreditPeriodItem;
 }
 
 export function stateReducer(state: IStateReducer, action: IAcion) {
@@ -22,10 +23,16 @@ export function stateReducer(state: IStateReducer, action: IAcion) {
 
   switch (type) {
     case ActionKind.SET_RATE:
-      return { ...state, creditRate: getFullRate(payload as number) };
+      return { ...state, creditRate: Number(payload) };
 
     case ActionKind.SET_SUM:
       return { ...state, creditSum: Number(payload) };
+
+    case ActionKind.SET_PERIOD:
+      return {
+        ...state,
+        currentPeriod: CreditPeriod[payload as keyof typeof CreditPeriod],
+      };
 
     default:
       return state;
@@ -39,5 +46,10 @@ export const setCreditRate = (payload: number) => ({
 
 export const setCreditSum = (payload: number) => ({
   type: ActionKind.SET_SUM,
+  payload,
+});
+
+export const setCreditPeriod = (payload: string) => ({
+  type: ActionKind.SET_PERIOD,
   payload,
 });

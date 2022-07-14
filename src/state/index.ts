@@ -1,2 +1,7 @@
 export { StateContext } from './stateContext';
-export { setCreditRate, setCreditSum, stateReducer } from './stateReducer';
+export {
+  setCreditRate,
+  setCreditSum,
+  setCreditPeriod,
+  stateReducer,
+} from './stateReducer';
