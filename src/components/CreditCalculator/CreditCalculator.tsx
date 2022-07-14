@@ -14,6 +14,7 @@ interface ICreditCalculator {
 
 const CreditCalculator: FC<ICreditCalculator> = ({ creditRate }) => {
   const [isOpenDetails, setIsOpenDetails] = useState(false);
+
   const [state, dispatch] = useReducer(stateReducer, {
     currentPeriod: CreditPeriod[12],
     creditSum: 10_000,
@@ -44,6 +45,7 @@ const CreditCalculator: FC<ICreditCalculator> = ({ creditRate }) => {
           isOpenDetails={isOpenDetails}
           toogleDetails={handleTogleDetails}
         />
+        {/* если развер кредита равен 0 и флаг не включен, дополнительная информация не показывается*/}
         {isOpenDetails && state.creditSum ? (
           <AllCreditDetails
             creditSum={state.creditSum}

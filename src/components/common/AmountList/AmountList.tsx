@@ -8,6 +8,7 @@ interface IAmountList {
 }
 
 const AmountList: FC<IAmountList> = ({ amount, customClassName }) => {
+  // разделение цифрф на целые и десятичные
   const arrayAmount = amount.toString().split('.');
 
   return (

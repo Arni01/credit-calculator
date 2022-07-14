@@ -1,13 +1,16 @@
 import { IStateReducer } from 'state/stateReducer';
 import { DefaultCreditRate, TCreditPeriodItem } from '../constants/CreditData';
 
+// функция работает при первом включении
 export const getFullRate = (refinancingRate: number) =>
   refinancingRate + DefaultCreditRate;
 
+// подсчет месячного процента
 const getPercentage = (rate: number) => {
   return rate > 0 ? rate / 100 / 12 : 0;
 };
 
+// подсчет месчного платежа (ссылку на формулу см в readme.md)
 const getMonthlyPayment = (sum: number, period: number, percentage: number) => {
   if (percentage === 0) return 0;
 
@@ -17,10 +20,12 @@ const getMonthlyPayment = (sum: number, period: number, percentage: number) => {
   return result;
 };
 
+// подсчет общего платежа
 const getTotalAmount = (monthlyPayment: number, period: number) => {
   return monthlyPayment > 0 ? monthlyPayment * period : 0;
 };
 
+// подсчет переплаты
 const getTotalOverPayment = (sum: number, totalAmount: number) => {
   return totalAmount > 0 ? totalAmount - sum : 0;
 };
@@ -32,6 +37,7 @@ export interface IGetCalculationCreditInfo {
   percentage: number;
 }
 
+// функциия для получения данных первичных данных о кредите(без детальных)
 export const getCalcutionCreditInfo = ({
   creditRate,
   currentPeriod,
@@ -51,6 +57,7 @@ export const getCalcutionCreditInfo = ({
 
 const getRoundNumber = (number: number) => Number(number.toFixed(2));
 
+// подстчет последнего платяже с учетом разницы между общими выплатами и помесячными * период выплат
 export const getLastMonthlyPayment = (
   monthlyPayment: number,
   totalAmount: number,
@@ -90,6 +97,7 @@ type TGetAllCreditDetails = {
   percentage: number;
 };
 
+// функция подсчета дополнительной информации об кредите
 export const getAllCreditDatails = ({
   sum,
   monthlyPayment,
@@ -141,5 +149,4 @@ export const getAllCreditDatails = ({
   }
 
   return result;
-  // номер платежа
 };
