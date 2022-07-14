@@ -1,6 +1,7 @@
 import { FC, memo } from 'react';
 import cn from 'classnames';
 import s from './CreditDescription.module.css';
+import { CURRENCY } from 'helpers/constants/CreditData';
 
 interface ICreditDescription {
   isMiddle?: boolean;
@@ -16,7 +17,7 @@ const CreditDescription: FC<ICreditDescription> = ({
   return (
     <div className={cn(s.container, isMiddle && s.mainDescription)}>
       <p className={s.title}>{title}</p>
-      <p className={s.description}>{description.toFixed(2)}</p>
+      <p className={s.description}>{`${description.toFixed(2)} ${CURRENCY}`}</p>
     </div>
   );
 };

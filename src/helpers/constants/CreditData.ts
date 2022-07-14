@@ -13,3 +13,5 @@ export const CreditPeriod = {
 };
 
 export const DefaultCreditRate = 5;
+
+export const CURRENCY = 'р.';
