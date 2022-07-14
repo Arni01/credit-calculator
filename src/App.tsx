@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { CreditCalculator } from './components';
+import { useGetRefinancingRate } from './hooks/useFetch/useGetRefinancingRate';
 
 function App() {
+  const { isLoading, data, isError } = useGetRefinancingRate();
+
+  if (isLoading) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div>
+        <h1>Sorry, something went wrong...</h1>
+      </div>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <CreditCalculator creditRate={data as number} />
     </div>
   );
 }
