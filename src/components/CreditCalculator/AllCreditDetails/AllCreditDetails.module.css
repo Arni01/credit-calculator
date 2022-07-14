@@ -1,0 +1,35 @@
+.table {
+  border-spacing: 0;
+}
+
+.table thead {
+  background-color: var(--clr-blue-light);
+}
+
+.table tbody tr {
+  position: relative;
+}
+
+.table tbody tr::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: var(--clr-gray-6);
+}
+
+.table thead th,
+.table tbody td {
+  /* max-width: 150px; */
+  align-items: center;
+  vertical-align: middle;
+}
+
+.caption {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-3);
+  color: var(--clr-black-15);
+}

@@ -1,8 +1,8 @@
 import { FC, memo } from 'react';
-import cn from 'classnames';
 import s from './AllCreditDetails.module.css';
 import { getAllCreditDatails } from 'helpers/creditMetods/creditMetods';
 import { TCreditPeriodItem } from 'helpers/constants/CreditData';
+import AllCreditDetailsItem from './AllCreditDetailsItem/AllCreditDetailsItem';
 
 interface IAllCreditDetails {
   creditSum: number;
@@ -28,18 +28,24 @@ const AllCreditDetails: FC<IAllCreditDetails> = ({
   });
 
   return (
-    <div>
-      {creditDetails.map((item) => (
-        <div key={item.id} style={{ display: 'flex', gap: 20 }}>
-          <p>{item.id}</p>
-          <p>{item.datePayment}</p>
-          <p>{item.interestPayment}</p>
-          <p>{item.monthlyPayment}</p>
-          <p>{item.mainDebit}</p>
-          <p>{item.remainingDebt}</p>
-        </div>
-      ))}
-    </div>
+    <table className={s.table}>
+      <caption className={s.caption}>Расчет по месяцам</caption>
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Дата платежа</th>
+          <th>Платеж по процентам</th>
+          <th>Платеж по основному долгу</th>
+          <th>Общая сумма платежа</th>
+          <th>Остаток</th>
+        </tr>
+      </thead>
+      <tbody>
+        {creditDetails.map((item) => (
+          <AllCreditDetailsItem key={item.id} {...item} />
+        ))}
+      </tbody>
+    </table>
   );
 };
 

@@ -15,7 +15,7 @@ function App() {
   if (isError) {
     return (
       <div>
-        <h1>Sorry, something went wrong...</h1>
+        <h3>Sorry, something went wrong...</h3>
       </div>
     );
   }

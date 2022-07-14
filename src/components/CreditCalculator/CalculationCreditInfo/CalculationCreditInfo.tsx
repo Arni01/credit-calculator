@@ -19,7 +19,7 @@ const CalculationCreditInfo: FC<ICalculationCreditInfo> = ({
 }) => {
   return (
     <div>
-      <h2>Расчет кредита</h2>
+      <h3>Расчет кредита</h3>
       <div className={s.containerDescription}>
         <CreditDescription
           description={monthlyPayment}

@@ -44,15 +44,15 @@ const CreditCalculator: FC<ICreditCalculator> = ({ creditRate }) => {
           isOpenDetails={isOpenDetails}
           toogleDetails={handleTogleDetails}
         />
-        <AllCreditDetails
-          creditSum={state.creditSum}
-          currentPeriod={state.currentPeriod}
-          monthlyPayment={Number(
-            calculationCreditInfo.monthlyPayment.toFixed(2)
-          )}
-          lastMonthlyPayment={lastMonthlyPayment}
-          percentage={percentage}
-        />
+        {isOpenDetails && state.creditSum ? (
+          <AllCreditDetails
+            creditSum={state.creditSum}
+            currentPeriod={state.currentPeriod}
+            monthlyPayment={calculationCreditInfo.monthlyPayment}
+            lastMonthlyPayment={lastMonthlyPayment}
+            percentage={percentage}
+          />
+        ) : null}
       </div>
     </StateContext.Provider>
   );

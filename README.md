@@ -1,3 +1,7 @@
+# Формулы
+
+Используются проценты по займам с аннуитетным графиком [link](https://www.raiffeisen.ru/wiki/kak-rasschitat-procenty-po-kreditu/#pl-form)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

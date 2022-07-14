@@ -20,13 +20,15 @@ const DataEntry: FC<IStateReducer> = ({
 
   const handleChangeSum = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      dispatch && dispatch(setCreditSum(Number(e.target.value)));
+      const inputValue = Number(e.target.value.replace(/[^\d]+/gi, ''));
+      dispatch && dispatch(setCreditSum(inputValue));
     },
     [dispatch]
   );
   const handleChangeRate = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      dispatch && dispatch(setCreditRate(Number(e.target.value)));
+      const inputValue = Number(e.target.value.replace(/[^\d]+/gi, ''));
+      dispatch && dispatch(setCreditRate(inputValue));
     },
     [dispatch]
   );
@@ -42,23 +44,31 @@ const DataEntry: FC<IStateReducer> = ({
   }, []);
 
   return (
-    <div className={s.container}>
-      <CustomInput
-        label="Сумма кредита"
-        onChange={handleChangeSum}
-        value={creditSum}
-      />
-      <CustomSelector
-        label="Срок кредита"
-        value={currentPeriod.value}
-        mapCreditPeriod={mapCreditPeriod}
-        onChange={handleChangePeriod}
-      />
-      <CustomInput
-        label="Ставка, %"
-        onChange={handleChangeRate}
-        value={creditRate}
-      />
+    <div>
+      <h3>Данный по кредиту</h3>
+
+      <div className={s.container}>
+        <CustomInput
+          label="Сумма кредита"
+          onChange={handleChangeSum}
+          value={creditSum}
+          inputMode="numeric"
+          placeholder="Введите сумму кредита"
+        />
+        <CustomSelector
+          label="Срок кредита"
+          value={currentPeriod.value}
+          mapCreditPeriod={mapCreditPeriod}
+          onChange={handleChangePeriod}
+        />
+        <CustomInput
+          label="Ставка, %"
+          onChange={handleChangeRate}
+          value={creditRate}
+          inputMode="numeric"
+          placeholder="Введите процент ставки"
+        />
+      </div>
     </div>
   );
 };
