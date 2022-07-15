@@ -1,5 +1,6 @@
 export { default as CreditCalculator } from './CreditCalculator/CreditCalculator'
 export { default as AllCreditDetails } from './CreditCalculator/AllCreditDetails/AllCreditDetails'
+export { default as AllCreditDetailsItem } from './CreditCalculator/AllCreditDetails/AllCreditDetailsItem/AllCreditDetailsItem'
 export { default as CalculationCreditInfo } from './CreditCalculator/CalculationCreditInfo/CalculationCreditInfo'
 export { default as DataEntry } from './CreditCalculator/DataEntry/DataEntry'
 

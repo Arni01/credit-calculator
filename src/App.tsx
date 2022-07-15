@@ -1,30 +1,26 @@
-import { CreditCalculator } from './components';
-import { useGetRefinancingRate } from './hooks/useFetch/useGetRefinancingRate';
+import { CreditCalculator } from './components'
+import { useGetRefinancingRate } from './hooks/useFetch/useGetRefinancingRate'
 
 function App() {
-  const { isLoading, data, isError } = useGetRefinancingRate();
+    const { isLoading, data, isError } = useGetRefinancingRate()
 
-  if (isLoading) {
-    return (
-      <div>
-        <h3>Loading...</h3>
-      </div>
-    );
-  }
+    if (isLoading) {
+        return (
+            <main>
+                <h3>Loading...</h3>
+            </main>
+        )
+    }
 
-  if (isError) {
-    return (
-      <div>
-        <h3>Sorry, something went wrong...</h3>
-      </div>
-    );
-  }
+    if (isError) {
+        return (
+            <main>
+                <h3>Sorry, something went wrong...</h3>
+            </main>
+        )
+    }
 
-  return (
-    <div>
-      <CreditCalculator creditRate={data as number} />
-    </div>
-  );
+    return <CreditCalculator creditRate={data as number} />
 }
 
-export default App;
+export default App

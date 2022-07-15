@@ -1,22 +1,34 @@
-import { CURRENCY } from 'helpers/constants/CreditData';
-import { FC, memo } from 'react';
-import s from './AmountList.module.css';
+import { CURRENCY } from 'helpers/constants/CreditData'
+import { FC, memo } from 'react'
+import s from './AmountList.module.css'
 
 interface IAmountList {
-  amount: number | string;
-  customClassName?: string;
+    amount: number | string
+    customClassName?: string
 }
 
 const AmountList: FC<IAmountList> = ({ amount, customClassName }) => {
-  // разделение цифрф на целые и десятичные
-  const arrayAmount = amount.toString().split('.');
+    // разделение цифрф на целые и десятичные
+    const arrayAmount = amount.toString().split('.')
+    const integer = arrayAmount[0]
+    let decimal = arrayAmount[1]
 
-  return (
-    <p className={customClassName}>
-      {arrayAmount[0]}.<span className={s.span}>{arrayAmount[1]}</span>{' '}
-      {CURRENCY}
-    </p>
-  );
-};
+    if (integer !== '0' && decimal.length !== 2) {
+        decimal = decimal + '0'
+    }
 
-export default memo(AmountList);
+    return (
+        <p className={customClassName}>
+            {amount ? (
+                <>
+                    {integer}.<span className={s.span}>{decimal}</span>
+                </>
+            ) : (
+                amount
+            )}{' '}
+            {CURRENCY}
+        </p>
+    )
+}
+
+export default memo(AmountList)

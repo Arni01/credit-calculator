@@ -1,6 +1,24 @@
 .container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 20px;
+    flex: 1 0 auto;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+.containerInput {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 1440px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        min-width: 0;
+    }
 }

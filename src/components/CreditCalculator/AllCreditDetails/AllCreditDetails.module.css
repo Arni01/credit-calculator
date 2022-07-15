@@ -1,35 +1,36 @@
 .table {
-  border-spacing: 0;
-}
-
-.table thead {
-  background-color: var(--clr-blue-light);
-}
-
-.table tbody tr {
-  position: relative;
-}
-
-.table tbody tr::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background-color: var(--clr-gray-6);
-}
-
-.table thead th,
-.table tbody td {
-  /* max-width: 150px; */
-  align-items: center;
-  vertical-align: middle;
+    /* border-spacing: 0; */
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .caption {
-  font-size: var(--fs-h3);
-  line-height: var(--lh-h3);
-  letter-spacing: var(--ls-3);
-  color: var(--clr-black-15);
+    font-family: var(--ff-Montserrat);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-h3);
+    font-weight: var(--fw-600);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-3);
+    color: var(--clr-black-15);
+    margin-bottom: 20px;
+}
+
+.table th {
+    padding: 10px 0;
+    color: var(--clr-black-15);
+    background-color: var(--clr-blue-main);
+    border: 1px solid var(--clr-blue-light);
+}
+
+.table .id {
+    padding: 10px 5px;
+}
+
+.date {
+    width: max(150px, min(10vw, 200px));
+}
+
+.remainingDebt {
+    width: max(100px, min(10vw, 200px));
 }

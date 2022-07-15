@@ -1,0 +1,34 @@
+.item {
+    position: relative;
+    text-align: right;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--clr-gray-6);
+}
+
+.item:nth-child(2n) {
+    background-color: var(--clr-blue-light);
+}
+
+@media (any-hover: hover) {
+    .item:hover {
+        --clr-body: var(--clr-white);
+        z-index: 1;
+        transition: all 0.2s ease-in-out;
+        background-color: var(--clr-blue-dark);
+    }
+    .item:hover::after {
+        background-color: none;
+    }
+}
+
+.item td {
+    padding: 5px 0;
+}
+
+.item td:first-child {
+    text-align: center;
+}
+
+.item p {
+    padding: 0 10px;
+}
