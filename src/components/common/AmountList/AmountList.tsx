@@ -9,15 +9,24 @@ interface IAmountList {
 
 const AmountList: FC<IAmountList> = ({ amount, customClassName }) => {
     // разделение цифрф на целые и десятичные
-    let [integer, decimal] = amount.toString().split('.')
+    const arrayAmount = amount.toString().split('.')
+    const integer = arrayAmount[0]
+    let decimal = arrayAmount[1]
 
-    integer = decimal ? integer + '.' : integer
-    decimal = decimal ? decimal : ''
+    if (integer !== '0' && decimal.length !== 2) {
+        decimal = decimal + '0'
+    }
 
     return (
         <p className={customClassName}>
-            {integer}
-            <span className={s.span}>{decimal}</span> {CURRENCY}
+            {amount ? (
+                <>
+                    {integer}.<span className={s.span}>{decimal}</span>
+                </>
+            ) : (
+                amount
+            )}{' '}
+            {CURRENCY}
         </p>
     )
 }

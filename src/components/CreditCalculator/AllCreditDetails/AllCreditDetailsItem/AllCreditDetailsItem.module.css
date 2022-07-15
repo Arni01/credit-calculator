@@ -9,31 +9,26 @@
     background-color: var(--clr-blue-light);
 }
 
-.item:hover {
-    z-index: 1;
-    transition: all 0.2s ease-in-out;
-    border-color: none;
-    box-shadow: inset 0 0 0 2px var(--clr-blue-dark);
+@media (any-hover: hover) {
+    .item:hover {
+        --clr-body: var(--clr-white);
+        z-index: 1;
+        transition: all 0.2s ease-in-out;
+        background-color: var(--clr-blue-dark);
+    }
+    .item:hover::after {
+        background-color: none;
+    }
 }
-.item:hover::after {
-    background-color: none;
-}
-
-/* .item::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background-color: var(--clr-gray-6);
-} */
 
 .item td {
     padding: 5px 0;
 }
 
+.item td:first-child {
+    text-align: center;
+}
+
 .item p {
     padding: 0 10px;
-    width: max-content;
 }

@@ -22,8 +22,12 @@ const AllCreditDetailsItem: FC<IAllCreditDetailsItem> = ({
 }) => {
     return (
         <tr className={s.item}>
-            <td>{id}</td>
-            <td>{datePayment}</td>
+            <td>
+                <p>{id}</p>
+            </td>
+            <td>
+                <p>{datePayment}</p>
+            </td>
 
             <td>
                 <AmountList amount={interestPayment} />
