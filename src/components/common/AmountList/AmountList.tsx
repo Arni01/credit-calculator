@@ -12,9 +12,12 @@ const AmountList: FC<IAmountList> = ({ amount, customClassName }) => {
     const arrayAmount = amount.toString().split('.')
     const integer = arrayAmount[0]
     let decimal = arrayAmount[1]
+    console.log({decimal});
+
 
     if (integer !== '0' && decimal?.length !== 2) {
-        decimal = decimal + '0'
+
+        decimal = decimal ? decimal + '0' : '00'
     }
 
     return (
