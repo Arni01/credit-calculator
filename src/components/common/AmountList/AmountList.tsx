@@ -13,7 +13,7 @@ const AmountList: FC<IAmountList> = ({ amount, customClassName }) => {
     const integer = arrayAmount[0]
     let decimal = arrayAmount[1]
 
-    if (integer !== '0' && decimal.length !== 2) {
+    if (integer !== '0' && decimal?.length !== 2) {
         decimal = decimal + '0'
     }
 
