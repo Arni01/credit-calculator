@@ -20,7 +20,7 @@ function App() {
         )
     }
 
-    return <CreditCalculator creditRate={data as number} />
+    return <CreditCalculator creditRate={data.rate as number} maxCreditSum={data.maxCreditSum}/>
 }
 
 export default App

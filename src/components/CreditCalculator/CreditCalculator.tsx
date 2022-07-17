@@ -10,15 +10,17 @@ import s from './CreditCalculator.module.css'
 
 interface ICreditCalculator {
     creditRate: number
+    maxCreditSum: number
 }
 
-const CreditCalculator: FC<ICreditCalculator> = ({ creditRate }) => {
+const CreditCalculator: FC<ICreditCalculator> = ({ creditRate, maxCreditSum }) => {
     const [isOpenDetails, setIsOpenDetails] = useState(false)
 
     const [state, dispatch] = useReducer(stateReducer, {
         currentPeriod: CreditPeriod[12],
         creditSum: 10_000,
         creditRate,
+        maxCreditSum
     })
 
     const handleTogleDetails = useCallback(() => {

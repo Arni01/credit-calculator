@@ -5,7 +5,7 @@ import RefinancingRateService from '../../services/RefinancingRate.service';
 export const useGetRefinancingRate = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [data, setData] = useState<number | null>(null);
+  const [rate, setData] = useState<number | null>(null);
 
   useEffect(() => {
     RefinancingRateService.getRate()
@@ -15,7 +15,7 @@ export const useGetRefinancingRate = () => {
   }, []);
 
   return useMemo(
-    () => ({ isLoading, data, isError }),
-    [isLoading, data, isError]
+    () => ({ isLoading,  data:{rate, maxCreditSum: 100000}, isError }),
+    [isLoading, rate, isError]
   );
 };

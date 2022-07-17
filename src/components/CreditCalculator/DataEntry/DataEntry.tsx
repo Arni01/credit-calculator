@@ -15,12 +15,14 @@ const DataEntry: FC<IStateReducer> = ({
     currentPeriod,
     creditSum,
     creditRate,
+    maxCreditSum
 }) => {
     const dispatch = useContext(StateContext)
 
     const handleChangeSum = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {
-            const inputValue = Number(e.target.value.replace(/[^\d]+/gi, ''))
+            let inputValue = Number(e.target.value.replace(/[^\d]+/gi, ''))
+            inputValue = inputValue > maxCreditSum ? maxCreditSum : inputValue
             dispatch && dispatch(setCreditSum(inputValue))
         },
         [dispatch]

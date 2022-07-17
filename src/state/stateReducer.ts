@@ -10,6 +10,7 @@ export interface IStateReducer {
     currentPeriod: TCreditPeriodItem
     creditSum: number
     creditRate: number
+    maxCreditSum: number
 }
 
 export interface IAcion {
